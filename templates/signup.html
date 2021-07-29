@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>SignUp</title>
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-2 text-center">SignUp</h1>
+    <p class="text-center" style="font-size:1.2rem;">CREATE AN ACCOUNT</p>
+
+    <div class="m-2">
+        <div class="col-lg-5 mx-auto border rounded p-3 shadow">
+
+            <form action="" method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" name="fname" class="form-control" placeholder="firstname">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" name="lname" class="form-control" placeholder="lastname">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" name="phone" class="form-control" placeholder="03XX-XXXXXXX">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="email" name="email" class="form-control" placeholder="abc@example.com">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="password" name="pass" class="form-control" placeholder="XXXXXX" maxlength="6">
+                </div>
+                <div class="d-grid mt-3">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

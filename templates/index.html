@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Products</title>
+{% endblock %}
+
+{% block content %}
+ <div class="container">
+    <h1 class="display-2 text-center">Products</h1>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="list-group">
+              <a href="/" class="list-group-item list-group-item-action" aria-current="true">
+                All
+              </a>
+                {% for c in cat %}
+                    <a href="/?category={{c.id}}" class="list-group-item list-group-item-action" id="ac">{{c.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row mt-2">
+                {% for p in prds %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card" style="width: 100%;">
+                          <img src="{{p.img.url}}" class="img-fluid" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">{{p.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{p.desc}}</h6>
+                            <p><b>PKR {{p.price}}</b></p>
+                            <button class="btn btn-primary">Add to Cart</button>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+ </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--<script>-->
+<!--    $(document).ready(function()-->
+<!--    {-->
+<!--        $('#ac').click(function()-->
+<!--        {-->
+<!--            $(this).addClass('active')-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
+{% endblock %}
