@@ -10,6 +10,9 @@ class ViewProduct(admin.ModelAdmin):
 class ViewCategory(admin.ModelAdmin):
     list_display = ['name']
 
+class ViewCustomer(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name', 'email', 'password', 'phone']
+
 admin.site.register(product.Product, ViewProduct)
 admin.site.register(category.Category, ViewCategory)
-admin.site.register(customer.Customer)
+admin.site.register(customer.Customer, ViewCustomer)

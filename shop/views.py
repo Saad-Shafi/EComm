@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models.product import Product
 from .models.category import Category
 from .models.customer import Customer
@@ -28,8 +28,17 @@ def signup(request):
         email = request.POST.get('email')
         password = request.POST.get('pass')
 
+        #Validation can be added here
+
         c = Customer(first_name=fname, last_name=lname, phone=phone, email=email, password=password)
 
-        c.register()
+        isExist = c.isExist()
+        isExCon = c.isExistCon()
 
-        return HttpResponse("SUCCESS")
+        if isExist or isExCon:
+            error = "User Already Exist"
+            return render(request, 'signup.html', {'er': error})
+        else:
+            c.register()
+            return redirect("index")
+

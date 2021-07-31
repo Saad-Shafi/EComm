@@ -9,3 +9,13 @@ class Customer(models.Model):
 
     def register(self):
         self.save()
+
+    def isExist(self):
+        if Customer.objects.filter(email= self.email):
+            return True
+        return False
+
+    def isExistCon(self):
+        if Customer.objects.filter(phone= self.phone):
+            return True
+        return False
