@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-2 text-center">Login</h1>
+    <p class="text-center" style="font-size:1.2rem;">BUY PRODUCTS</p>
+
+    <div class="m-2">
+        <div class="col-lg-5 mx-auto border rounded p-3 shadow">
+
+            {% if er %}
+                <div class="alert alert-danger" role="alert">
+                    {{er}}
+                </div>
+            {% endif %}
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group mt-2">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="abc@example.com" required>
+                </div>
+                <div class="form-group mt-2">
+                    <lable>Password</lable>
+                    <input type="password" name="pass" class="form-control" placeholder="XXXXXX" maxlength="6" required>
+                </div>
+                <div class="d-grid mt-3">
+                    <input type="submit" class="btn btn-primary" value="Login">
+                </div>
+            </form>
+            <div class="mt-2">
+                <p class="text-center">New User?<a href="/signup"> Click here to Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

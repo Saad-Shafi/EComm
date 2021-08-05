@@ -19,3 +19,10 @@ class Customer(models.Model):
         if Customer.objects.filter(phone= self.phone):
             return True
         return False
+
+    @staticmethod
+    def getCustomer(em):
+        try:
+            return Customer.objects.get(email= em)
+        except:
+            False

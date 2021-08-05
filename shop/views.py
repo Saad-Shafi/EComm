@@ -42,3 +42,24 @@ def signup(request):
             c.register()
             return redirect("index")
 
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    else:
+        email = request.POST.get('email')
+        password = request.POST.get('pass')
+
+        c = Customer.getCustomer(email)
+        if c:
+            if password == c.password:
+               return redirect("index")
+            else:
+                error = "Invalid Email or Password"
+        else:
+            print("Hello how are you")
+            error = "Invalid Email or Password"
+
+        return render(request, 'login.html', {'er': error})
+
+
