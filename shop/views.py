@@ -53,7 +53,8 @@ def login(request):
         c = Customer.getCustomer(email)
         if c:
             if password == c.password:
-               return redirect("index")
+                request.session['customer'] = c.id
+                return redirect("index")
             else:
                 error = "Invalid Email or Password"
         else:
@@ -61,5 +62,9 @@ def login(request):
             error = "Invalid Email or Password"
 
         return render(request, 'login.html', {'er': error})
+
+def logout(request):
+    request.session.clear()
+    return redirect("index")
 
 

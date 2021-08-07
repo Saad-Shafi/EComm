@@ -29,12 +29,24 @@
             </li>
           </ul>
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                 <a class="nav-link active" aria-current="page" href="/signup">SignUp</a>
-                </li>
+                {% if request.session.customer %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                     <a class="nav-link active" aria-current="page" href="#">Cart</a>
                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="#">Orders</a>
+                </li>
+                 <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                </li>
+                {% else %}
+                 <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
       </div>
@@ -42,17 +54,17 @@
 
     {% block content %}{% endblock %}
 
-    <footer>
-        <div class="container">
-           <div class="row">
-               <div class="col-sm-6" >
-                   <p class="text-end" style="margin-top:8px;">Designed and Developed by Saad Bin Shafi</p>
-               </div>
-               <div class="col-sm-6">
-                    <p class="text-start" style="margin-top:8px;">All Rights Reserved &copy;</p>
-               </div>
-           </div>
-        </div>
-    </footer>
+<!--    <footer>-->
+<!--        <div class="container">-->
+<!--           <div class="row">-->
+<!--               <div class="col-sm-6" >-->
+<!--                   <p class="text-end" style="margin-top:8px;">Designed and Developed by Saad Bin Shafi</p>-->
+<!--               </div>-->
+<!--               <div class="col-sm-6">-->
+<!--                    <p class="text-start" style="margin-top:8px;">All Rights Reserved &copy;</p>-->
+<!--               </div>-->
+<!--           </div>-->
+<!--        </div>-->
+<!--    </footer>-->
 </body>
 </html>
